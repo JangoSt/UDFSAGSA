@@ -1,0 +1,35 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.wirundich.kalorienrechner.fragments.DayView$PlaceholderFragment"
+    android:orientation="vertical"
+    android:showDividers="middle">
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vpPager"
+        android:layout_width="match_parent"
+        android:layout_height="140dp">
+
+
+    </android.support.v4.view.ViewPager>
+
+    <ListView
+        android:animateLayoutChanges="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/lwSimple"
+        android:divider="@android:drawable/divider_horizontal_dim_dark"
+
+        android:dividerHeight="2px"
+        android:drawSelectorOnTop="true"
+        android:padding="10dp">
+
+    </ListView>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="60px"></FrameLayout>
+
+
+</LinearLayout>

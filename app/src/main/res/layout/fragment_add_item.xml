@@ -1,0 +1,140 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.wirundich.kalorienrechner.fragments.AddItem$PlaceholderFragment"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/btnAddItem">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/dialog_holo_light_frame"
+            >
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10px"
+                android:layout_marginRight="10px"
+                android:layout_marginTop="10px">
+
+                <TextView
+
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Kalorien"
+                    android:id="@+id/textView2"
+                    android:layout_gravity="right"
+                    android:layout_alignBottom="@+id/edtNotice"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent" />
+
+                <EditText
+
+                    android:layout_height="wrap_content"
+                    android:inputType="numberSigned"
+                    android:ems="10"
+                    android:id="@+id/edtCalorie"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent" />
+            </LinearLayout>
+
+            <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+                android:layout_marginLeft="10px"
+                android:layout_marginRight="10px">
+
+                <TextView
+
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Notiz"
+                android:id="@+id/textView"
+                android:layout_gravity="right"
+                android:layout_above="@+id/edtNotice"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_weight="1"
+                android:layout_width="match_parent" />
+
+                <EditText
+                    android:layout_height="wrap_content"
+                    android:id="@+id/edtNotice"
+                    android:layout_below="@+id/edtCalorie"
+                    android:layout_alignLeft="@+id/edtCalorie"
+                    android:layout_alignStart="@+id/edtCalorie"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/dialog_holo_light_frame"
+            android:paddingTop="40px">
+
+            <Button
+                android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:id="@+id/btnSetDate"
+                style="?android:attr/borderlessButtonStyle"
+                android:background="@android:color/transparent"
+                android:drawableRight="@android:drawable/ic_menu_edit"
+                android:nestedScrollingEnabled="true"
+                android:onClick="setDate"
+                android:gravity="left" />
+
+            <Button
+                style="?android:attr/borderlessButtonStyle"
+                android:background="@android:color/transparent"
+                android:drawableRight="@android:drawable/ic_menu_edit"
+
+                android:nestedScrollingEnabled="true"
+                android:onClick="setDate"
+                android:gravity="left"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/btnSetTime" />
+        </LinearLayout>
+
+        <com.wirundich.kalorienrechner.Components.VerticalSeekBar
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"></com.wirundich.kalorienrechner.Components.VerticalSeekBar>
+
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnAddItem"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="save Data"
+        style="?android:attr/borderlessButtonStyle"
+        android:background="@android:drawable/dialog_holo_light_frame"
+
+
+        />
+
+
+</RelativeLayout>

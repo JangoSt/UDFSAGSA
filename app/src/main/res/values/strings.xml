@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">HappaHappa</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_add_item">AddItem</string>
+    <string name="title_activity_change_date">ChangeDateActivity</string>
+    <string name="title_activity_change_clock">ChangeClockActivity</string>
+    <string name="title_activity_list_items">ListItems</string>
+    <string name="title_activity_navigation_draw"></string>
+
+    <string-array name="titles">
+        <item>"Add Item"</item>
+        <item>"List"</item>
+    </string-array>
+
+    <string name="title_activity_day_view">DayView</string>
+    <string name="state">Status</string>
+    <string name="delete">Löschen</string>
+    <string name="edit">Ändern</string>
+    <string name="drawer_open">Navigation</string>
+    <string name="drawer_closed"></string>
+    <string name="title_activity_list_simple_items">ListSimpleItems</string>
+    <string name="title_activity_select_date_fragment">SelectDateFragment</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="maxCalorie">Maximale Kalorien:</string>
+    <string name="actUserText">Aktueller Nutzer</string>
+    <string name="DayViewName">Übersicht</string>
+    <string name="AddItemName">Happa+</string>
+    <string name="ListExpandableItemsName">Historie</string>
+
+</resources>
