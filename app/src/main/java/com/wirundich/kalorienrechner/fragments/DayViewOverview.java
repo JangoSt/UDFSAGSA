@@ -1,5 +1,6 @@
 package com.wirundich.kalorienrechner.fragments;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -28,7 +30,9 @@ public class DayViewOverview extends Fragment {
     TextView dateField;
     TextView actCalorie;
     TextView maxCalorie;
+    ImageButton editUser;
     ProgressBar calories;
+//    OnDayOverViewCalling onDayOverViewCalling;
     BroadcastReceiver broadcastReceiver;
 
     static  public DayViewOverview newInstance(int postion){
@@ -72,6 +76,7 @@ public class DayViewOverview extends Fragment {
                 }
             }
         };
+
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(broadcastReceiver, new IntentFilter(db.ITEM_CHANGED_FILTER));
 
 
@@ -83,5 +88,16 @@ public class DayViewOverview extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+    }
+
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try{
+       //     onDayOverViewCalling = (OnDayOverViewCalling)activity;
+        }catch(ClassCastException e){
+            throw  new ClassCastException(activity.toString() + " must implement");
+        }
     }
 }

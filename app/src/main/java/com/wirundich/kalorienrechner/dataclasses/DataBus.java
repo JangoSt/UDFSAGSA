@@ -31,7 +31,7 @@ public  class DataBus extends Application {
     private ArrayList<ItemDay> items = new ArrayList<ItemDay>();
     private ItemUser user;
     private ItemDay actDay;
-    OnItemChangedListener onItemChangedListener;
+
 
 
 
@@ -44,7 +44,7 @@ public  class DataBus extends Application {
             Log.d("Items", "loading was successfull");
         else
             Log.e("Items","loading error, new List will be created");
-        user = new ItemUser();
+        user = new ItemUser(0,0,0,0, 0);
         setActDayItem(new Date());
 
     }
@@ -135,6 +135,10 @@ public  class DataBus extends Application {
     public ItemDay getActDay() {
         setActDayItem(new Date());
         return actDay;
+    }
+    public void setUser(ItemUser user){
+        this.user = user;
+
     }
 
 }

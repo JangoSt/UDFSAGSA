@@ -2,11 +2,11 @@
 <resources>
     <color name="white">#FFFFFF</color>
     <color name="TitleActionNavigationBar">#222222</color>
-    <color name="ItemClicked">#ff55a9ff</color>
+    <color name="ItemClicked">#ff67ce56</color>
     <color name="ItemNotClicked">#ffa4d1ff</color>
     <color name="silver">#C0C0C0</color>
     <color name="gray">#808080</color>
-    <color name="AppThemeColor">#ff00ab0f</color>
+    <color name="AppThemeColor">#ffcfff99</color>
     <color name="olive">#808000</color>
     <color name="purple">#800080</color>
     <color name="maroon">#800000</color>

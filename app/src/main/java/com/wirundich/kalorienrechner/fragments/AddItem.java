@@ -6,29 +6,36 @@ import android.support.v4.app.Fragment;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.DragEvent;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 
+import com.wirundich.kalorienrechner.Components.VerticalSeekBar;
 import com.wirundich.kalorienrechner.FormatClasses.Formater;
 import com.wirundich.kalorienrechner.R;
 import com.wirundich.kalorienrechner.dataclasses.DataBus;
 import com.wirundich.kalorienrechner.dataclasses.ItemCalorie;
-import com.wirundich.kalorienrechner.dataclasses.OnItemChangedListener;
+
 
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class AddItem extends Fragment {
-    OnItemChangedListener onItemChangedListener;
+
         DataBus db;
         public final String ARG_FRAGITEM = "Add Item";
     Button setDate;
@@ -36,6 +43,7 @@ public class AddItem extends Fragment {
     ItemCalorie actItemCalorie;
     GregorianCalendar actDate;
     Calendar calendar;
+    VerticalSeekBar seekBarNom;
     public static final String FRAG_NAME = "Add Item";
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,7 +60,7 @@ public class AddItem extends Fragment {
 
     public AddItem() { };
 
-    @Nullable
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_add_item, container, false);
@@ -79,7 +87,7 @@ public class AddItem extends Fragment {
                     Log.d("DEBUG", "Item added" + actItemCalorie.toString());
                     edtCalorie.setText("");
                     edtNotice.setText("");
-                    onItemChangedListener.onItemAdded();
+
                     getFragmentManager().beginTransaction().replace(R.id.pager, new ListExpandableItems()).commit();
                 }
             }
@@ -120,6 +128,42 @@ public class AddItem extends Fragment {
                 timePicker.show();
             }
         });
+        seekBarNom = (VerticalSeekBar) rootView.findViewById(R.id.seekBarNom);
+        seekBarNom.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                edtCalorie.setText(progress+"");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        edtCalorie.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                if(edtCalorie.getText().toString().)
+//                seekBarNom.setProgress(Integer.parseInt(edtCalorie.getText().toString()));
+//                else
+//                    seekBarNom.setProgress(0);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         return rootView;
     }
@@ -139,7 +183,7 @@ public class AddItem extends Fragment {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         try{
-            onItemChangedListener = (OnItemChangedListener) activity;
+
         }
         catch(ClassCastException e)
         {

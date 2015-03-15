@@ -18,7 +18,7 @@ import com.wirundich.kalorienrechner.R;
 import com.wirundich.kalorienrechner.dataclasses.DataBus;
 import com.wirundich.kalorienrechner.dataclasses.ItemCalorie;
 import com.wirundich.kalorienrechner.dataclasses.ItemDay;
-import com.wirundich.kalorienrechner.dataclasses.OnItemChangedListener;
+
 
 import java.util.ArrayList;
 

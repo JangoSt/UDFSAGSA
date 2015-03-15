@@ -1,15 +1,11 @@
 package com.wirundich.kalorienrechner.NavigationDrawer;
 
 
-import android.app.ActionBar;
-import android.app.Activity;
-
 import android.app.FragmentManager;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -26,16 +22,16 @@ import android.widget.ListView;
 
 import com.wirundich.kalorienrechner.R;
 import com.wirundich.kalorienrechner.dataclasses.DataBus;
-import com.wirundich.kalorienrechner.dataclasses.OnItemChangedListener;
+
 import com.wirundich.kalorienrechner.fragments.AddItem;
 import com.wirundich.kalorienrechner.fragments.DayView;
-import com.wirundich.kalorienrechner.fragments.DayViewOverview;
 import com.wirundich.kalorienrechner.fragments.ListExpandableItems;
 import com.wirundich.kalorienrechner.fragments.UserOverview;
+import com.wirundich.kalorienrechner.fragments.UserSettings;
 
 import java.util.ArrayList;
 
-public class NavigationDraw2 extends FragmentActivity implements OnItemChangedListener,UserOverview.OnFragmentInteractionListener {
+public class NavigationDraw2 extends FragmentActivity implements UserOverview.OnFragmentUserOverViewInteraction{
     private DrawerLayout mDrawerLayout;
     ViewPager pager;
     private ListView mDrawerList;
@@ -150,18 +146,27 @@ public class NavigationDraw2 extends FragmentActivity implements OnItemChangedLi
         return super.onCreateView(parent, name, context, attrs);
     }
 
-    @Override
-    public void onItemAdded() {
-        DataBus db = (DataBus) getApplicationContext();
-        DayViewOverview dayViewOverview = (DayViewOverview) getSupportFragmentManager().findFragmentById(R.id.vpPager);
-        if(dayViewOverview != null){
-            dayViewOverview.updateView(db.getActDay(), db.getUser());
-        }
-    }
+//    @Override
+//    public void onItemAdded() {
+//        DataBus db = (DataBus) getApplicationContext();
+//        DayViewOverview dayViewOverview = (DayViewOverview) getSupportFragmentManager().findFragmentById(R.id.vpPager);
+//        if(dayViewOverview != null){
+//            dayViewOverview.updateView(db.getActDay(), db.getUser());
+//        }
+//    }
 
     @Override
     public void onFragmentInteraction(Uri uri) {
 
+    }
+
+    @Override
+    public void onEditButtonPressed(boolean editMode) {
+        if(getSupportFragmentManager().findFragmentByTag("UserSettingsFrag")== null)
+            getSupportFragmentManager().beginTransaction().replace(R.id.contentframe_dayView, UserSettings.newInstance(0,0,0,0,0), "UserSettingsFrag").addToBackStack("UserSettings").commit();
+        else {
+            getSupportFragmentManager().popBackStack();
+        }
     }
 
 

@@ -5,7 +5,7 @@
         android:id="@+id/lwItems"
         android:layout_width="match_parent"
 
-     android:background="@android:drawable/dialog_holo_light_frame"
- >
+        android:backgroundTint="@color/AppThemeColor"
+>
         </ExpandableListView>
 

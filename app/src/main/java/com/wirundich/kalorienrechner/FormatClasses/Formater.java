@@ -8,7 +8,7 @@ import java.util.Date;
  */
 public class Formater {
 public static String dateFormater(Date date){
-    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+    SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
     return sdf.format(date);
 }
     public static String timeFormater(Date date){
@@ -16,7 +16,7 @@ public static String dateFormater(Date date){
         return sdf.format(date);
     }
     public static String dayFormater(Date date){
-        SimpleDateFormat sdf = new SimpleDateFormat("EEEEEEEEEEE");
+        SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
         return sdf.format(date);
     }
 }

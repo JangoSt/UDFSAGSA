@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_dark">
+    android:background="@color/AppThemeColor">
 
     <TextView
         android:layout_width="wrap_content"
@@ -10,7 +10,11 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text"
         android:id="@+id/txt_header_day"
-        android:layout_marginLeft="50px" />
+        android:layout_marginLeft="50px"
+        android:textStyle="normal"
+        android:typeface="serif"
+        android:textColorHighlight="@color/ItemNotClicked"
+        android:textColor="@color/primary_material_dark"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -18,5 +22,6 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="txt_header_item"
         android:id="@+id/txt_header_date"
-        android:layout_marginLeft="60px" />
+        android:layout_marginLeft="60px"
+        android:textColor="@color/primary_material_dark"/>
 </LinearLayout>

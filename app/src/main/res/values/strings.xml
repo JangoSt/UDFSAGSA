@@ -14,6 +14,14 @@
         <item>"Add Item"</item>
         <item>"List"</item>
     </string-array>
+    <string-array name="spinner_sport_list">
+        <item>Mega Faul, sitzen und liegen </item>
+        <item>Semi Faul, sitzen bisschen bewegung</item>
+        <item>Normal, sitzend, gehend und stehend</item>
+
+        <item>Semi Aktiv, stehend und gehend</item>
+        <item>Aktiv, viel sprotliche Aktivität</item>
+    </string-array>
 
     <string name="title_activity_day_view">DayView</string>
     <string name="state">Status</string>
@@ -29,5 +37,12 @@
     <string name="DayViewName">Übersicht</string>
     <string name="AddItemName">Happa+</string>
     <string name="ListExpandableItemsName">Historie</string>
+    <string name="male">männlich</string>
+    <string name="female">weiblich</string>
+    <string name="size">Größe</string>
+    <string name="alter">Alter</string>
+    <string name="weight">Gewicht</string>
+    <string name="sport_activity">Sportliche Aktivität</string>
+    <string name="birthdayyear">Geburtsjahr</string>
 
 </resources>

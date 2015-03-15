@@ -14,18 +14,24 @@
 
     </android.support.v4.view.ViewPager>
 
-    <ListView
-        android:animateLayoutChanges="true"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/lwSimple"
-        android:divider="@android:drawable/divider_horizontal_dim_dark"
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/contentframe_dayView">
 
-        android:dividerHeight="2px"
-        android:drawSelectorOnTop="true"
-        android:padding="10dp">
+        <ListView
+            android:animateLayoutChanges="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/lwSimple"
+            android:divider="@android:drawable/divider_horizontal_dim_dark"
 
-    </ListView>
+            android:dividerHeight="2px"
+            android:drawSelectorOnTop="true"
+            android:padding="10dp">
+
+        </ListView>
+    </RelativeLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
