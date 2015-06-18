@@ -2,7 +2,8 @@
 xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="140dp"
-    tools:context="com.wirundich.kalorienrechner.fragments.DayViewOverview">
+    tools:context="com.wirundich.kalorienrechner.fragments.DayViewOverview"
+    android:background="@color/color_main">
 android:layout_width="fill_parent"
 android:layout_height="wrap_content"
 android:background="@android:drawable/dialog_holo_light_frame"
@@ -15,12 +16,10 @@ android:padding="10dp">
     android:text="Large Text"
 
     android:id="@+id/txt_dayView_day"
-    android:layout_alignParentTop="true"
-    android:paddingLeft="50px"
-    android:paddingRight="50px"
-    android:paddingTop="10dp"
+    android:layout_alignParentTop="false"
     android:layout_toRightOf="@+id/imageView2"
-    android:layout_toEndOf="@+id/imageView2" />
+    style="@style/text_prio1"
+    android:layout_alignTop="@+id/imageView2" />
 
 <TextView
     android:layout_width="wrap_content"
@@ -30,7 +29,8 @@ android:padding="10dp">
     android:id="@+id/txt_dayView_date"
     android:layout_below="@+id/txt_dayView_day"
     android:layout_alignLeft="@+id/txt_dayView_day"
-    android:layout_marginLeft="70px" />
+    style="@style/text_prio2"
+    android:layout_alignParentStart="false" />
 
 <ProgressBar
     style="@android:style/Widget.Holo.ProgressBar.Horizontal"
@@ -39,11 +39,12 @@ android:padding="10dp">
     android:id="@+id/prog_dayview_calorie"
     android:progress="100"
     android:progressDrawable="@drawable/costum_progressbar"
-    android:layout_below="@+id/imageView2"
     android:layout_alignParentBottom="false"
-    android:layout_marginBottom="10dp"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentRight="true" />
+    android:layout_alignParentLeft="false"
+    android:layout_alignParentRight="true"
+    android:layout_below="@+id/txtCalorieAct"
+    android:layout_toRightOf="@+id/imageView2"
+    android:layout_marginTop="10px" />
 
 <TextView
     android:layout_width="wrap_content"
@@ -52,7 +53,8 @@ android:padding="10dp">
     android:text="@string/state"
     android:id="@+id/textView5"
     android:layout_below="@+id/txt_dayView_date"
-    android:layout_alignLeft="@+id/txt_dayView_date" />
+    android:layout_alignLeft="@+id/txt_dayView_day"
+    style="@style/text_prio2" />
 
 <TextView
     android:layout_width="wrap_content"
@@ -62,7 +64,8 @@ android:padding="10dp">
     android:id="@+id/txtCalorieAct"
     android:layout_below="@+id/txt_dayView_date"
     android:layout_marginLeft="10px"
-    android:layout_toRightOf="@+id/textView5" />
+    android:layout_toRightOf="@+id/textView5"
+    style="@style/text_prio2" />
 
 <TextView
     android:layout_width="wrap_content"
@@ -72,7 +75,8 @@ android:padding="10dp">
     android:id="@+id/textView4"
     android:layout_below="@+id/txt_dayView_date"
     android:layout_marginLeft="10px"
-    android:layout_toRightOf="@+id/txtCalorieAct" />
+    android:layout_toRightOf="@+id/txtCalorieAct"
+    style="@style/text_prio2" />
 
 <TextView
     android:layout_width="wrap_content"
@@ -82,7 +86,8 @@ android:padding="10dp">
     android:id="@+id/txtCalorieMax"
     android:layout_below="@+id/txt_dayView_date"
     android:layout_marginLeft="10px"
-    android:layout_toRightOf="@+id/textView4" />
+    android:layout_toRightOf="@+id/textView4"
+    style="@style/text_prio2" />
 
     <ImageView
         android:layout_width="90dp"

@@ -14,10 +14,12 @@ import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
+import com.wirundich.kalorienrechner.Components.Indicator;
 import com.wirundich.kalorienrechner.R;
 import com.wirundich.kalorienrechner.dataclasses.DataBus;
 import com.wirundich.kalorienrechner.dataclasses.ItemCalorie;
 import com.wirundich.kalorienrechner.dataclasses.ItemDay;
+import com.wirundich.kalorienrechner.dataclasses.Listeners.DataBusListener;
 
 
 import java.util.ArrayList;
@@ -64,6 +66,10 @@ public class ListViewItemCalorieAdapter extends BaseAdapter {
         TextView noticeText =(TextView) v.findViewById(R.id.txtNoticeText);
         TextView txtCalorie =(TextView) v.findViewById(R.id.txtCalorie);
         ImageButton iButton = (ImageButton)v.findViewById(R.id.menuButtonCostumChildRow);
+        Indicator indicator = (Indicator) v.findViewById(R.id.item_indicator);
+        indicator.setProgress((int) (100.0/(DataBus.getInstance().getUser().getMaxCalorie()/3)*itemCalorie.getCalorie()));
+        TextView indicatorProc = (TextView) v.findViewById(R.id.item_txt_proc);
+        indicatorProc.setText(indicator.getProgress()/3+" %");
         iButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,10 +80,9 @@ public class ListViewItemCalorieAdapter extends BaseAdapter {
                         switch (item.getItemId()) {
                             case R.id.action_deleteItem:
                                 calorieList.remove(position);
-                                LocalBroadcastManager.getInstance(ctx).sendBroadcast(new Intent(((DataBus)ctx).ITEM_CHANGED_FILTER));
-                                notifyDataSetChanged();
+                                DataBus.getInstance().notifyItemAdded();
                         }
-                        return true;
+                        return false;
                     }
                 });
                 MenuInflater menuInflater = popupMenu.getMenuInflater();
@@ -86,7 +91,7 @@ public class ListViewItemCalorieAdapter extends BaseAdapter {
             }
         });
         header.setText(itemCalorie.getTime());
-        txtCalorie.setText(itemCalorie.getCalorie()+"");
+        txtCalorie.setText(itemCalorie.getCalorie()+" kcal");
 
         if(itemCalorie.getNotice().equals(""))
             noticeText.setText("keine Beschreibung");
@@ -96,7 +101,4 @@ public class ListViewItemCalorieAdapter extends BaseAdapter {
         return v;
 
     }
-
-
-
 }

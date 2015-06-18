@@ -1,7 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="140dp"
-    tools:context="com.wirundich.kalorienrechner.fragments.UserOverview">
+    tools:context="com.wirundich.kalorienrechner.fragments.UserOverview"
+    android:background="@color/color_main">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -25,7 +26,8 @@
         android:id="@+id/textView3"
         android:layout_alignTop="@+id/imageView"
         android:layout_toRightOf="@+id/imageView"
-        android:layout_toEndOf="@+id/imageView" />
+        android:layout_toEndOf="@+id/imageView"
+        style="@style/text_prio1" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -35,7 +37,8 @@
         android:id="@+id/textView6"
         android:layout_below="@+id/textView3"
         android:layout_toRightOf="@+id/imageView"
-        android:layout_toEndOf="@+id/imageView" />
+        android:layout_toEndOf="@+id/imageView"
+        style="@style/text_prio2" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -45,7 +48,8 @@
         android:id="@+id/txtViewMaxCalorieUser"
         android:layout_below="@+id/textView6"
         android:layout_toRightOf="@+id/imageView"
-        android:layout_toEndOf="@+id/imageView" />
+        android:layout_toEndOf="@+id/imageView"
+        style="@style/text_prio2" />
 
     <ImageButton
         android:layout_width="50dp"

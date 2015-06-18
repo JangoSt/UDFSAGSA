@@ -1,9 +1,11 @@
 package com.wirundich.kalorienrechner.dataclasses;
 
+import android.app.Activity;
 import android.app.Application;
 import android.util.Log;
 
 import com.wirundich.kalorienrechner.FormatClasses.Formater;
+import com.wirundich.kalorienrechner.dataclasses.Listeners.DataBusListener;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,42 +18,71 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Matze on 22.02.2015.
  *
  * Handels ActItem, No need to set actual Date in other classes
  */
-public  class DataBus extends Application {
-    public final String ITEM_CHANGED_FILTER = "ItemHasChanged";
-    private final String ARRLIST_ITEMS = "ArrayListItems";
-    private File file;
-    //private ArrayList<ItemCalorie> items = new ArrayList<ItemCalorie>();
-    private String[] fragments= {"Add Items", "List"};
-    private ArrayList<ItemDay> items = new ArrayList<ItemDay>();
-    private ItemUser user;
-    private ItemDay actDay;
+public  class DataBus {
+    private static DataBus mDataBus;
+    public static DataBus getInstance(){
+        if( mDataBus == null)
+            mDataBus = new DataBus();
+        return mDataBus;
 
+    }
+    public DataBus(){
+        listeners = new ArrayList<DataBusListener>();
 
-
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        initSingletons();
-        file = new File (getApplicationContext().getFilesDir(), "Data");
+    }
+    public void initLoad(Activity activity){
+        file = new File (activity.getApplicationContext().getFilesDir(), "Data");
         if(loadData())
             Log.d("Items", "loading was successfull");
         else
             Log.e("Items","loading error, new List will be created");
         user = new ItemUser(0,0,0,0, 0);
         setActDayItem(new Date());
+    }
+    public final String ITEM_CHANGED_FILTER = "ItemHasChanged";
+    private final String ARRLIST_ITEMS = "ArrayListItems";
+    private File file;
+    //private ArrayList<ItemCalorie> items = new ArrayList<ItemCalorie>();
+
+    private ArrayList<ItemDay> items = new ArrayList<ItemDay>();
+    private ItemUser user;
+    private ItemDay actDay;
+
+    private List<DataBusListener>listeners;
+
+    public void addListener(DataBusListener dataBusListener){
+        listeners.add(dataBusListener);
+        notifyItemAdded();
+        notifyUserValueChanged();
 
     }
-
-    private void initSingletons(){
+    public void removeListener(DataBusListener dataBusListener){
+        listeners.remove(listeners.indexOf(dataBusListener));
 
     }
+    public void notifyItemAdded(){
+        saveData();
+        for (DataBusListener dataBusListener: listeners){
+            dataBusListener.ItemInListChanged();
+        }
+    }
+    public void notifyUserValueChanged(){
+        for (DataBusListener dataBusListener: listeners){
+            dataBusListener.UserValuesChanged();
+        }
+    }
+
+
+
+
+
     public boolean saveData() {
         try {
             FileOutputStream fos = new FileOutputStream(file.getPath());
@@ -96,8 +127,9 @@ public  class DataBus extends Application {
         actDay.addCalorieItem(i);
         Collections.sort(items);
         Log.d("List changed", "Item added, List contains now " + items.size() + " items");
-       saveData();
+
         printItems();
+        notifyItemAdded();
 
 
     }
@@ -106,9 +138,7 @@ public  class DataBus extends Application {
         return items;
     }
 
-    public String[] getFragments() {
-        return fragments;
-    }
+
     public void printItems(){
         for(ItemDay iDay :items){
             Log.w("PRINTITEMS","--> "+iDay.toString());
@@ -138,6 +168,7 @@ public  class DataBus extends Application {
     }
     public void setUser(ItemUser user){
         this.user = user;
+        notifyUserValueChanged();
 
     }
 

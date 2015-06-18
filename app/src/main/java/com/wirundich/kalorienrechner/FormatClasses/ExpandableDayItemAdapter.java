@@ -101,7 +101,6 @@ public class ExpandableDayItemAdapter extends BaseExpandableListAdapter implemen
             }
             TextView dayPlainText = (TextView) v.findViewById(R.id.txt_header_day);
             TextView datePlainText = (TextView) v.findViewById(R.id.txt_header_date);
-
             ItemDay itemDay = dayList.get(groupPosition);
             dayPlainText.setText(itemDay.getDay());
             datePlainText.setText(itemDay.getDate());

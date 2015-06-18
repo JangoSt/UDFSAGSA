@@ -1,0 +1,26 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.wirundich.kalorienrechner.fragments.Calendar"
+    android:orientation="vertical">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <CalendarView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/calendarView"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_weight="1"
+        android:showWeekNumber="false"
+        android:weekSeparatorLineColor="@color/color_main"
+        android:selectedWeekBackgroundColor="@color/color_main" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"></LinearLayout>
+
+
+</LinearLayout>

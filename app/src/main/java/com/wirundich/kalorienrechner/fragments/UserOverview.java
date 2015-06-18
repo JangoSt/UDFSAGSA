@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.wirundich.kalorienrechner.R;
 import com.wirundich.kalorienrechner.dataclasses.DataBus;
+import com.wirundich.kalorienrechner.dataclasses.Listeners.DataBusListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,24 +25,24 @@ import com.wirundich.kalorienrechner.dataclasses.DataBus;
  * create an instance of this fragment.
  */
 
-public class UserOverview extends Fragment {
+public class UserOverview extends Fragment implements DataBusListener {
     ImageButton editUser;
-    static String KEY_POSITION = "position";
+
     TextView maxCalore;
     boolean editMode;
     DataBus db;
-    static  public UserOverview newInstance(int postion){
+    static  public UserOverview newInstance(){
 
         UserOverview frag = new UserOverview();
         Log.d(frag.getClass().getName(), "new Instance created");
         Bundle args = new Bundle();
-        args.putInt(KEY_POSITION, postion);
+
         frag.setArguments(args);
 
         return frag;
     }
 
-    private OnFragmentUserOverViewInteraction mListener;
+
 
 
 
@@ -62,7 +63,7 @@ public class UserOverview extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_user_overview, container, false);
         maxCalore = (TextView) rootView.findViewById(R.id.txtViewMaxCalorieUser);
-        db = (DataBus) getActivity().getApplicationContext();
+        db = DataBus.getInstance();
         maxCalore.setText(db.getUser().getMaxCalorie()+"");
 
         editUser = (ImageButton) rootView.findViewById(R.id.imgBtnEditUser);
@@ -78,8 +79,6 @@ public class UserOverview extends Fragment {
                     editUser.setImageDrawable(getResources().getDrawable(R.drawable.icon_ok));
                 }
 
-                mListener.onEditButtonPressed(editMode);
-
             }
         });
         return rootView;
@@ -88,39 +87,22 @@ public class UserOverview extends Fragment {
     // TODO: Rename method, update argument and hook method into UI event
 
 
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        try {
-            mListener = (OnFragmentUserOverViewInteraction) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
+
+
     public void updateView(){
         maxCalore.setText(db.getUser().getMaxCalorie()+"");
     }
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentUserOverViewInteraction {
-        // TODO: Update argument type and name
-        public void onFragmentInteraction(Uri uri);
-        public void onEditButtonPressed(boolean editMode);
+
+    @Override
+    public void ItemInListChanged() {
+
     }
+
+    @Override
+    public void UserValuesChanged() {
+        updateView();
+    }
+
 
 }

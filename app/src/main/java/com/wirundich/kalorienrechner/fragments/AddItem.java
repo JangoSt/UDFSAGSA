@@ -48,7 +48,7 @@ public class AddItem extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        db = (DataBus)getActivity().getApplication();
+        db = DataBus.getInstance();
         calendar = Calendar.getInstance();
         actDate = new GregorianCalendar();
     }
@@ -74,7 +74,7 @@ public class AddItem extends Fragment {
             @Override
             public void onClick(View v) {
                 if(edtCalorie.getText().toString().equals("")){
-                    Toast.makeText(db, "Bitte Kalorien eingeben", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Bitte Kalorien eingeben", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     actItemCalorie= new ItemCalorie(Integer.parseInt(edtCalorie.getText().toString()), new Date());
@@ -88,7 +88,6 @@ public class AddItem extends Fragment {
                     edtCalorie.setText("");
                     edtNotice.setText("");
 
-                    getFragmentManager().beginTransaction().replace(R.id.pager, new ListExpandableItems()).commit();
                 }
             }
         });
@@ -179,15 +178,9 @@ public class AddItem extends Fragment {
     }
 
 
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        try{
 
-        }
-        catch(ClassCastException e)
-        {
-            throw new ClassCastException(activity.toString()+"has to implement Listener Interface");
-        }
+
+    public static Fragment newInstance() {
+        return new AddItem();
     }
 }

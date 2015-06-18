@@ -6,23 +6,23 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:name=".dataclasses.DataBus"
-        android:allowBackup="true"
-android:icon="@android:color/transparent"
-        android:label="@string/AddItemName"
-        android:theme="@style/CustomActionBarTheme">
 
+        android:allowBackup="true"
+        android:icon="@android:color/transparent"
+        android:label="@string/AddItemName"
+        android:screenOrientation="portrait"
+        android:theme="@style/CustomActionBarTheme" >
 
         <activity
-            android:name=".NavigationDrawer.NavigationDraw2"
-            android:label="@string/title_activity_navigation_draw" >
+            android:name=".NavigationDrawer.Main2Activity"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
     </application>
 
 </manifest>

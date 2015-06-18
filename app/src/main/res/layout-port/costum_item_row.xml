@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:background="?android:attr/activatedBackgroundIndicator"
     >
 
-
-    <FrameLayout
-        android:layout_width="fill_parent"
-        android:layout_height="1px"
-        android:background="@color/TitleActionNavigationBar"></FrameLayout>
 
     <TextView
             android:layout_width="wrap_content"
@@ -23,16 +18,53 @@
             android:shadowDy="1"
             android:shadowRadius="1.0"
             android:shadowColor="#000000"/>
-
+        <com.wirundich.kalorienrechner.Components.Indicator
+            android:layout_width="50dp"
+            android:layout_height="10dp"
+            android:layout_alignParentTop="true"
+            android:id="@+id/item_indicator"
+            android:layout_alignParentRight="true"></com.wirundich.kalorienrechner.Components.Indicator>
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="fill_parent"
             android:id="@+id/menuButtonCostumChildRow"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:scaleType="centerInside"
             style="?android:attr/borderlessButtonStyle"
-            android:src="@android:drawable/ic_menu_more" />
+            android:src="@drawable/abc_ic_menu_moreoverflow_mtrl_alpha"
+            android:scaleType="centerInside"
+            android:layout_below="@+id/item_indicator" />
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Medium Text"
+            android:textColor="@color/TitleActionNavigationBar"
+            android:id="@+id/txtNoticeText"
+            android:layout_marginLeft="50px"
+            android:layout_below="@+id/txtHeader" />
+
+    <LinearLayout
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentEnd="false"
+        android:layout_toLeftOf="@+id/menuButtonCostumChildRow"
+        android:gravity="center_vertical|center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="30 %"
+            android:id="@+id/item_txt_proc"
+            android:layout_below="@+id/item_indicator"
+            android:layout_alignLeft="@+id/item_indicator"
+            android:layout_alignRight="@+id/item_indicator"
+            android:textAlignment="gravity"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_marginTop="10dp"
+            android:textColor="#000000" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -41,20 +73,12 @@
             android:text="Medium Text"
             android:textColor="@color/TitleActionNavigationBar"
             android:id="@+id/txtCalorie"
-            android:layout_marginLeft="50px"
-            android:layout_below="@+id/txtHeader" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Medium Text"
-            android:textColor="@color/TitleActionNavigationBar"
-            android:id="@+id/txtNoticeText"
-            android:layout_marginLeft="50px"
-            android:layout_below="@+id/txtCalorie" />
-
-
+            android:layout_below="@+id/txtNoticeText"
+            android:layout_toStartOf="@+id/menuButtonCostumChildRow"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:textAlignment="gravity" />
+    </LinearLayout>
 
 
 </RelativeLayout>

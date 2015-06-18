@@ -19,24 +19,27 @@ import com.wirundich.kalorienrechner.FormatClasses.ListViewItemCalorieAdapter;
 import com.wirundich.kalorienrechner.R;
 import com.wirundich.kalorienrechner.dataclasses.DataBus;
 import com.wirundich.kalorienrechner.dataclasses.ItemDay;
+import com.wirundich.kalorienrechner.dataclasses.Listeners.DataBusListener;
 
-public class DayView extends Fragment {
+public class DayView extends Fragment implements DataBusListener{
     View rootView ;
     ListView lwSimple;
     ActionMode mActionMode;
     FragmentPagerAdapter fragmentPagerAdapter;
-
+    ListViewItemCalorieAdapter lwiC;
 
    public final String FRAG_NAME = "DayView";
     DataBus db;
     ItemDay itemDay;
 
-
+    public static Fragment newInstance(){
+        return new DayView();
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        db = (DataBus)getActivity().getApplication();
+        db = DataBus.getInstance();
     }
 
     @Override
@@ -51,27 +54,16 @@ public class DayView extends Fragment {
                 Toast.makeText(getActivity().getApplication(),"FUUU",Toast.LENGTH_SHORT).show();
             }
         });
-        ListViewItemCalorieAdapter lwiC = new ListViewItemCalorieAdapter(db.getActDay(), getActivity().getApplication());
+        lwiC = new ListViewItemCalorieAdapter(db.getActDay(), getActivity().getApplication());
         lwSimple.setAdapter(lwiC);
         lwSimple.setClickable(true);
-        updateValues();
-
 
         ViewPager pager = (ViewPager)rootView.findViewById(R.id.vpPager);
         pager.setAdapter(new SampleAdapter(getActivity(),getChildFragmentManager()));
 
         return rootView;
     }
-    public void updateValues(){
-//        itemDay = db.getActDay();
-//        calories.setMax(db.getUser().getMaxCalorie());
-//        calories.setProgress(itemDay.getCaloriesDay());
-//        actCalorie.setText(itemDay.getCaloriesDay() + "");
-//        maxCalorie.setText(db.getUser().getMaxCalorie()+"");
-//        dayField.setText(itemDay.getDay());
-//        dateField.setText(itemDay.getDate());
 
-    }
     @Override
     public String toString() {
         return FRAG_NAME;
@@ -80,9 +72,27 @@ public class DayView extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        updateValues();
+        db.addListener(this);
 
     }
+
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        db.removeListener(this);
+    }
+
+    @Override
+    public void ItemInListChanged() {
+        lwiC.notifyDataSetChanged();
+    }
+
+    @Override
+    public void UserValuesChanged() {
+
+    }
+
     public class SampleAdapter extends FragmentPagerAdapter{
         Context ctx;
         public SampleAdapter(Context ctx, FragmentManager mgr){
@@ -95,7 +105,7 @@ public class DayView extends Fragment {
             if (position == 0)
             return (DayViewOverview.newInstance(position));
             else
-                return  (UserOverview.newInstance(position));
+                return  (UserOverview.newInstance());
         }
 
         @Override

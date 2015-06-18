@@ -15,22 +15,21 @@
         android:layout_alignParentStart="true"
         android:text="Daten speichern" />
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="fill_parent"
-        android:layout_height="3px"
-        android:layout_above="@+id/btnAddItem"
-        android:scaleType="center"
-        android:src="@drawable/seperator" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bar_height"
+        android:id="@+id/frameLayout"
+        android:background="@color/color_main"></FrameLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_above="@+id/imageView4"
-        android:layout_alignParentTop="true"
         android:layout_weight="0.9"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_above="@+id/btnAddItem"
+        android:layout_below="@+id/frameLayout"
+        android:baselineAligned="false">
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -57,11 +56,13 @@
                     android:layout_alignParentTop="false"
                     android:layout_alignParentLeft="false"
                     android:layout_alignTop="@+id/btnSetDate"
-                    android:layout_alignBottom="@+id/btnSetDate" />
+                    android:layout_alignBottom="@+id/btnSetDate"
+                    style="@style/text_prio1"
+                    android:textColor="#000000" />
 
                 <Button
                     android:id="@+id/btnSetDate"
-                    style="?android:attr/borderlessButtonStyle"
+                    style="@style/text_prio1"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="@android:color/transparent"
@@ -70,10 +71,11 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:onClick="setDate"
                     android:text="TExtText"
-                    android:layout_toRightOf="@+id/textView8" />
+                    android:layout_toRightOf="@+id/textView8"
+                    android:textColor="#000000" />
                 <Button
                     android:id="@+id/btnSetTime"
-                    style="?android:attr/borderlessButtonStyle"
+                    style="@style/text_prio1"
                     android:layout_width="match_parent"
 
                     android:layout_height="30dp"
@@ -84,7 +86,8 @@
                     android:onClick="setDate"
                     android:text="TExtText"
                     android:layout_below="@+id/btnSetDate"
-                    android:layout_alignLeft="@+id/btnSetDate" />
+                    android:layout_alignLeft="@+id/btnSetDate"
+                    android:textColor="#000000" />
 
             </RelativeLayout>
 
@@ -103,7 +106,9 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:text="Kalorien"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    style="@style/text_prio1"
+                    android:textColor="#000000" />
 
                 <EditText
                     android:id="@+id/edtCalorie"
@@ -151,7 +156,9 @@
                             android:layout_weight="1"
                             android:text="Notiz"
                             android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:gravity="center_horizontal" />
+                            android:gravity="center_horizontal"
+                            style="@style/text_prio1"
+                            android:textColor="#000000" />
 
                         <EditText
                             android:id="@+id/edtNotice"

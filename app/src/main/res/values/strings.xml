@@ -44,5 +44,6 @@
     <string name="weight">Gewicht</string>
     <string name="sport_activity">Sportliche Aktivität</string>
     <string name="birthdayyear">Geburtsjahr</string>
+    <string name="title_activity_main2">Main2Activity</string>
 
 </resources>

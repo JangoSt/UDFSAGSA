@@ -16,23 +16,21 @@ import com.wirundich.kalorienrechner.R;
 import com.wirundich.kalorienrechner.dataclasses.DataBus;
 import com.wirundich.kalorienrechner.dataclasses.ItemCalorie;
 import com.wirundich.kalorienrechner.dataclasses.ItemDay;
+import com.wirundich.kalorienrechner.dataclasses.Listeners.DataBusListener;
 
 import java.util.ArrayList;
 
-public class ListExpandableItems extends Fragment {
+public class ListExpandableItems extends Fragment implements DataBusListener{
     DataBus db;
+    private ExpandableDayItemAdapter iAdapter;
     public final String FRAG_NAME = "ListExpandableItems";
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        db = (DataBus)getActivity().getApplication();
+        db =DataBus.getInstance();
  }
 
-    @Override
-    public void onResume() {
-        super.onResume();
 
-    }
 
     @Override
     public String toString() {
@@ -45,14 +43,32 @@ public class ListExpandableItems extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_expandablelist_items, container, false);
         ExpandableListView exList = (ExpandableListView)rootView.findViewById(R.id.lwItems);
         exList.setIndicatorBounds(5,5);
-        ExpandableDayItemAdapter iAdapter = new ExpandableDayItemAdapter(db.getItems(),getActivity().getApplication());
+        iAdapter = new ExpandableDayItemAdapter(db.getItems(),getActivity().getApplication());
         exList.setAdapter(iAdapter);
-
         return rootView;
     }
+    public static Fragment newInstance() {
+        return new ListExpandableItems();
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        db.addListener(this);
 
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        db.removeListener(this);
+    }
+    @Override
+    public void ItemInListChanged() {
+        iAdapter.notifyDataSetChanged();
+    }
 
+    @Override
+    public void UserValuesChanged() {
 
-
+    }
 }
 
